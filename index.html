@@ -4,21 +4,96 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Me</title>
+  <style>
+    body {
+      background-color: #8ecbc4;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #333;
+      line-height: 1.6;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    
+    h1 {
+      color: #e3c119;
+      background-color: #2863bd;
+      border: 3px solid brown;
+      border-radius: 12px;
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 20px;
+    }
+
+    
+    .about {
+      background-color: slategrey;
+      color: whitesmoke;
+      border-radius: 5px;
+      padding: 15px;
+      margin: 20px auto;
+      max-width: 600px;
+    }
+
+    
+    .section-title {
+      color: chocolate;
+      background-color: #272a23;
+      border-radius: 50px;
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 20px 0;
+    }
+
+    
+    img {
+      border-radius: 20px;
+      border: 3px solid black;
+      margin: 15px 0;
+      max-width: 90%;   /* makes it shrink if screen is small */
+      height: auto;     /* keeps aspect ratio */
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #444;
+      padding: 10px;
+      background: #f2f2f2;
+    }
+
+    /* Links */
+    a {
+      display: inline-block;
+      margin: 20px 0;
+      text-decoration: none;
+      color: #2863bd;
+      font-weight: bold;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-  <h1>Ritesh H. Shinde</h1>
+  <div>
+    <h1>Ritesh H. Shinde</h1>
+  </div>
 
-  <p>
+  <p class="about">
     My full name is Ritesh Haridas Shinde. I am a 2nd year Computer Science student at a no-name college. 
     I enjoy learning new technologies and experimenting with new things. 
     I was born in Sangli and raised in Kolhapur. 
     I love learning new things.
   </p>
 
-  <h2>Here's a picture of me:</h2>
-  <img src="an_image.jfif" height="500" width="300" alt="Ritesh Shinde">
+  <h2 class="section-title">Here's a picture of me:</h2>
+  <img src="an_image.jfif" alt="Ritesh Shinde">
 
-  <h2>Hobbies / Interests:</h2>
+  <h2 class="section-title">Hobbies / Interests:</h2>
   <ul>
     <li>Drawing</li>
     <li>Music</li>
