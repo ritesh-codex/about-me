@@ -19,6 +19,26 @@
       padding: 0;
     }
 
+    /* Navigation Bar */
+    .navbar {
+      background-color: #1d0909;
+      display: flex;
+      justify-content: flex-end; 
+      padding: 10px 20px;
+    }
+
+    .navbar_contents {
+      margin-right: 20px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .navbar_contents:hover {
+      color: #e3c119;
+    }
+
     /* Main heading */
     h1 {
       color: #e3c119;
@@ -122,11 +142,26 @@
   </style>
 </head>
 <body>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <nav>
+      <a class="navbar_contents" href="#">Home</a>
+      <a class="navbar_contents" href="#about">About Me</a>
+      <a class="navbar_contents" href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Title -->
+  <h1>About Me</h1>  
+
+  <!-- Name -->
   <div>
     <h1>Ritesh H. Shinde</h1>
   </div>
 
-  <p class="about">
+  <!-- About Section -->
+  <p class="about" id="about">
     My full name is Ritesh Haridas Shinde. I am a 2nd year Computer Science student at a no-name college. 
     I enjoy learning new technologies and experimenting with new things. 
     I was born in Sangli and raised in Kolhapur. 
@@ -154,8 +189,9 @@
     Visit my GitHub Profile
   </a>
 
-  <footer>
+  <!-- Footer -->
+  <footer id="contact">
     <p>© 2024 Ritesh H. Shinde</p>
-  </footer>
+  </footer>  
 </body>
 </html>
