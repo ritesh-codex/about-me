@@ -1,37 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Me</title>
 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    html{
-      scroll-behavior: smooth;
-    }
+    /* layout helpers */
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      background-color: #8ecbc4;
-      font-family: 'Poppins', sans-serif;
-      color: #333;
-      line-height: 1.6;
-      text-align: center;
       margin: 0;
       padding: 0;
+      padding-top: 60px; 
+      font-family: 'Poppins', sans-serif;
+      background-color: #8ecbc4;
+      color: #333;
+      text-align: center;
+      line-height: 1.6;
     }
 
-    /* Navigation Bar */
+    /* Sections: allow growth if content exceeds viewport */
+    section {
+      min-height: 100vh;              
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;            
+      font-size: 1.25rem;
+    }
+
+    /* Navigation Bar*/
     .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
       background-color: #1d0909;
       display: flex;
-      justify-content: flex-end; 
+      justify-content: flex-end;
       padding: 10px 20px;
-      border-bottom-left-radius:1cm;
-      border-bottom-right-radius:1cm;
+      border-bottom-left-radius: 1cm;
+      border-bottom-right-radius: 1cm;
     }
-
     .navbar_contents {
       margin-right: 20px;
       color: white;
@@ -39,12 +54,9 @@
       font-weight: 600;
       transition: color 0.3s ease;
     }
+    .navbar_contents:hover { color: #e3c119; }
 
-    .navbar_contents:hover {
-      color: #e3c119;
-    }
-
-    /* Main heading */
+    /* Headings */
     h1 {
       color: #e3c119;
       background-color: #2863bd;
@@ -52,28 +64,31 @@
       border-radius: 12px;
       display: inline-block;
       padding: 10px 20px;
-      margin-top: 20px;
+      margin: 10px 0;
     }
 
-    /* Paragraph block */
+    /* About card */
     .about {
+      width: 100%;
+      max-width: 900px;
       background-color: slategrey;
       color: whitesmoke;
-      border-radius: 5px;
-      padding: 15px;
-      margin: 20px auto;
-      max-width: 600px;
+      border-radius: 8px;
+      padding: 18px;
+      margin: 10px 0 24px;
+      text-align: left;               
+      line-height: 1.5;
     }
 
-    /* Section container */
+    /* Sub-section container inside About */
     .section {
+      width: 100%;
+      max-width: 900px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin: 20px 0;
+      margin: 10px 0;
     }
-
-    /* Section headings */
     .section-title {
       color: chocolate;
       background-color: #272a23;
@@ -85,52 +100,49 @@
 
     /* Image */
     img {
-      border-radius: 20px;
+      border-radius: 12px;
       border: 3px solid black;
-      max-width: 90%;
+      max-width: 320px;
+      width: 100%;
       height: auto;
       margin-bottom: 10px;
       transition: transform 0.3s ease;
     }
-
-    img:hover {
-      transform: scale(1.05);
-    }
+    img:hover { transform: scale(1.03); }
 
     /* Hobbies list */
-    ul {
-      list-style-type: none;
-      padding-left: 0;
-    }
-
+    ul { list-style-type: none; padding-left: 0; margin: 0; }
     ul li {
-      transition: all 0.3s ease;   
-      padding: 5px 10px;
-      border-radius: 5px;          
+      transition: all 0.25s ease;
+      padding: 8px 12px;
+      border-radius: 6px;
       cursor: pointer;
+      margin: 6px 0;
     }
-
     ul li:hover {
       background-color: #2863bd;
       color: white;
-      transform: scale(1.05);
+      transform: scale(1.03);
     }
 
-    /* Footer */
+    /* Footer (inside contact section) */
     footer {
-      margin-top: 30px;
+      width: 100%;
+      max-width: 900px;
+      margin-top: 20px;
       font-size: 14px;
       color: white;
-      padding: 15px;
+      padding: 18px;
       background: #2863bd;
-      border-top-left-radius: 1cm;
-      border-top-right-radius: 1cm;
+      border-radius: 1cm;
+      box-sizing: border-box;
+      text-align: center;
     }
 
-    /* Links */
-    a {
+    /* Links styling (not global for nav) */
+    .cta-link {
       display: inline-block;
-      margin: 20px 0;
+      margin: 10px 0;
       text-decoration: none;
       color: #2863bd;
       font-weight: bold;
@@ -138,24 +150,57 @@
       border-radius: 8px;
       border: 2px solid #2863bd;
       transition: all 0.3s ease;
+      background: white;
     }
-
-    a:hover {
+    .cta-link:hover {
       background-color: #2863bd;
       color: white;
       box-shadow: #444 5px 10px 2px;
-      transform: scale(1.05);
+      transform: scale(1.03);
     }
-    #copyright:hover{
-      text-decoration: underline;
-      text-decoration-color: white;
+
+    /* small-screen tweaks */
+    @media (max-width: 520px) {
+      .navbar { justify-content: center; }
+      .navbar_contents { margin-right: 8px; font-size: 0.95rem; }
+      h1 { font-size: 1.1rem; padding: 8px 14px; }
+      section { padding: 30px 12px; }
+      .about, .section, footer { padding-left: 12px; padding-right: 12px; }
     }
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px 0;
+      }
+
+      .navbar_contents {
+        margin: 12px 0;
+        font-size: 1rem;
+        padding: 8px 12px;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .about, .section {
+        font-size: 1rem;
+        padding: 10px;
+      }
+
+      img {
+        max-width: 100%;
+      }
+    }
+
   </style>
 </head>
 <body>
 
   <!-- Navigation -->
-  <header class="navbar" id="home">
+  <header class="navbar">
     <nav>
       <a class="navbar_contents" href="#home">Home</a>
       <a class="navbar_contents" href="#about">About Me</a>
@@ -163,56 +208,47 @@
     </nav>
   </header>
 
-  <!-- Title -->
-  <h1>About Me</h1>  
-
-  <!-- Name -->
-  <div>
+  <!-- Home Section -->
+  <section id="home">
     <h1>Ritesh H. Shinde</h1>
-  </div>
+    <p>Welcome to my personal page!</p>
+  </section>
 
   <!-- About Section -->
-  <p class="about" id="about">
-    My full name is Ritesh Haridas Shinde. I am a 2nd year Computer Science student at a no-name college. 
-    I enjoy learning new technologies and experimenting with new things. 
-    I was born in Sangli and raised in Kolhapur. 
-    I love learning new things.
-  </p>
+  <section id="about">
+    <div class="about">
+      <p>
+        Hello! I'm Ritesh H. Shinde, a passionate individual with a keen interest in technology and creativity.
+        I love exploring new ideas and turning them into reality. When I'm not coding or working on tech projects,
+        you can find me indulging in my hobbies like drawing, listening to music, and cooking delicious meals.
+      </p>
+    </div>
 
-  <!-- Image Section -->
-  <div class="section">
-    <h2 class="section-title">Here's a picture of me:</h2>
-    <img src="an_image.jfif" alt="Ritesh Shinde">
-  </div>
+    <!-- Image -->
+    <div class="section">
+      <h2 class="section-title">Here's a picture of me:</h2>
+      <img src="an_image.jfif" alt="Ritesh Shinde">
+    </div>
 
-  <!-- Hobbies Section -->
-  <div class="section">
-    <h2 class="section-title">Hobbies / Interests:</h2>
-    <ul>                                   
-      <li>Drawing</li>
-      <li>Music</li>
-      <li>Cooking</li>
-    </ul>
-  </div>
+    <!-- Hobbies -->
+    <div class="section">
+      <h2 class="section-title">Hobbies / Interests:</h2>
+      <ul>
+        <li>Drawing</li>
+        <li>Music</li>
+        <li>Cooking</li>
+      </ul>
+    </div>
+  </section>
 
-  <!-- GitHub Link -->
-  <a href="https://github.com/ritesh-codex" target="_blank" title="GitHub Profile">
-    Visit my GitHub Profile
-  </a>
+  <!-- Contact Section -->
+  <section id="contact">
+    <footer>
+      <p id="copyright">© 2024 Ritesh H. Shinde</p>
+      <p><a class="cta-link" href="mailto:xyz@gmail.com">📧 Email me</a></p>
+      <p><a class="cta-link" href="https://github.com/ritesh-codex" target="_blank">💻 GitHub Profile</a></p>
+    </footer>
+  </section>
 
-    <!-- Footer -->
-  <footer id="contact">
-    <p id="copyright">© 2024 Ritesh H. Shinde</p>
-    <p>
-      <a href="mailto:xyz@gmail.com" style="color: white; text-decoration: underline;">
-        📧 Email me
-      </a>
-    </p>
-    <p>
-      <a href="https://github.com/ritesh-codex" target="_blank" style="color: white; text-decoration: underline;">
-        💻 GitHub Profile
-      </a>
-    </p>
-  </footer>  
 </body>
 </html>
